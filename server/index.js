@@ -1,8 +1,9 @@
+const dotenv = require("dotenv")
 const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const ClientModel = require('./models/Clients')
-const dotenv = require("dotenv")
+
 const DBConnect = require('./config/dbConn');
 
 
