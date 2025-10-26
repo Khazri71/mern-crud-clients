@@ -2,14 +2,19 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const ClientModel = require('./models/Clients')
+const dotenv = require("dotenv")
+const DBConnect = require('./config/dbConn');
 
 
+dotenv.config();
 const app = express()
 app.use(cors())
 app.use(express.json())
 
 // Connecter Database 
-mongoose.connect("mongodb://localhost:27017/crud-clients")
+DBConnect();
+
+
 
 // CRUD
 // API :  Ajouter client 
@@ -52,7 +57,7 @@ app.delete("/supprimerClient/:id" , (req,res) => {
     .catch( err => res.json(err))
 })
 
-
-app.listen("3001" , ()=>{
-    console.log("Server is Running")
+const PORT = process.env.PORT || 5000
+app.listen(PORT , ()=>{
+    console.log(`server is running on port ${PORT}`)
 })

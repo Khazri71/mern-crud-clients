@@ -12,10 +12,11 @@ export const ModifierClient = () => {
   const [email , setEmail] =  useState()
   const [age , setAge] = useState()
   const navigate = useNavigate()
+  const apiUrl = import.meta.env.VITE_API_URL;
 
 
   useEffect(()=>{
-    axios.get("http://localhost:3001/obtenirClient/"+ id)
+    axios.get(`${apiUrl}/obtenirClient/${id}`)
     .then (result => {
       console.log(result)
       setNom(result.data.nom)
@@ -29,7 +30,7 @@ export const ModifierClient = () => {
 
  const Modifier = (e) => {
    e.preventDefault()
-   axios.put("http://localhost:3001/modifierClient/"+id , {nom , email,age})
+   axios.put(`${apiUrl}/modifierClient/${id}`, {nom , email,age})
    .then( result => {
     console.log(result)
     navigate("/")
@@ -56,7 +57,7 @@ export const ModifierClient = () => {
   </div>
 
   <div className="mb-3"> 
-    <input type="text" className="form-control" id="email" placeholder="Entrer Email"  required
+    <input type="email" className="form-control" id="email" placeholder="Entrer Email"  required
     value={email}
     onChange ={(e) => setEmail(e.target.value)}
     />

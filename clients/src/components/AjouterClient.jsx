@@ -11,11 +11,13 @@ export const AjouterClient = () => {
 
   const navigate = useNavigate()
 
+    const apiUrl = import.meta.env.VITE_API_URL;
+
 
 
    const Ajouter = (e) => {
          e.preventDefault()
-         axios.post("http://localhost:3001/ajouterClient" , {nom , email , age})
+         axios.post(`${apiUrl}/ajouterClient`  , {nom , email , age})
          .then(result => {
           console.log(result)
           navigate("/")
@@ -39,7 +41,7 @@ export const AjouterClient = () => {
   </div>
 
   <div className="mb-3">
-    <input type="text" className="form-control" id="email" placeholder="Entrer Email" required
+    <input type="email" className="form-control" id="email" placeholder="Entrer Email" required
     onChange={(e) => setEmail(e.target.value)}
     />
   </div>
