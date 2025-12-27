@@ -17,7 +17,7 @@ export const AjouterClient = () => {
 
    const Ajouter = (e) => {
          e.preventDefault()
-         axios.post(`${apiUrl}/ajouterClient`  , {nom , email , age})
+         axios.post(`${apiUrl}/ajouterClient`  , {nom , email , age} , { headers: { "Cache-Control": "no-cache" } })
          .then(result => {
           console.log(result)
           navigate("/")
