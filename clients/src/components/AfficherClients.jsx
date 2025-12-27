@@ -15,7 +15,8 @@ export const AfficherClients = () => {
 
   useEffect( () => {
      axios.get(apiUrl , { headers: { "Cache-Control": "no-cache" } })
-     .then( result => setClients(result.data))
+     .then( result => { setClients(result.data); 
+                         console.log("Data from backend:", result.data); })
      .catch( err => console.log(err))
   }, [])
 
