@@ -30,7 +30,7 @@ export const ModifierClient = () => {
 
  const Modifier = (e) => {
    e.preventDefault()
-   axios.put(`${apiUrl}/modifierClient/${id}`, {nom , email,age})
+   axios.put(`${apiUrl}/modifierClient/${id}`, {nom , email,age} , { headers: { "Cache-Control": "no-cache" } })
    .then( result => {
     console.log(result)
     navigate("/")
